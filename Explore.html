@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Explore – TravelApp</title>
+<style>
+*{
+    box-sizing:border-box
+}
+body{
+    margin:0;
+    font-family:system-ui,sans-serif;
+    color:#0b2d6b;
+    background:linear-gradient(#e6eefb,#f7faff) fixed}
+header{
+    position:sticky;
+    top:0;
+    background:#fff;
+    border-bottom:1px solid #d5e0f5;
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+    padding:8px 16px;
+    align-items:center
+}
+.logo{
+    font-weight:800;
+    margin-right:auto
+}
+header a{
+    color:#0b2d6b;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:8px;
+    font-size:.9rem
+}header a.on{
+    background:#f26a1b;
+    color:#fff;
+    font-weight:700
+}
+main{
+    max-width:960px;
+    margin:auto;
+    padding:20px 16px 50px
+}
+h1{text-align:center;
+    margin:8px 0 4px
+}h2{
+    margin:26px 0 8px;
+    font-size:1.2rem}
+.sub{text-align:center;
+    color:#4d638f
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:14px
+}
+.card{
+    background:#fff;
+    border:1px solid #d5e0f5;
+    border-radius:14px;
+    padding:14px;
+    color:inherit;text-decoration:none;
+    box-shadow:0 2px 8px #0b2d6b14
+}
+.big{
+    font-size:2.4rem
+}
+input,button{
+    font:inherit;
+    padding:10px;
+    border:1px solid #d5e0f5;
+    border-radius:10px;
+    background:#fff;
+    color:inherit
+}
+.chips{display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin:12px 0}
+.chip{
+border-radius:20px;
+padding:6px 14px;
+cursor:pointer
+}.chip.on{
+background:#0b2d6b;
+color:#fff}
+#q{
+width:100%;
+max-width:600px;
+display:block;
+margin:16px auto
+}
+</style>
+</head>
+<body>
+<header>
+    <span class="logo">TravelApp</span>
+    <a href="Home.html">Home</a>
+    <a class="on" href="Explore.html">Explore</a>
+    <a href="plan.html">Plan Trip</a>
+    <a href="hotels.html">Hotel Booking</a>
+    <a href="food.html">Food</a>
+    <a href="more.html">More</a>
+</header>
+<main>
+<h1>Explore</h1>
+<p class="sub">Discover categories & experiences</p>
+<input id="q" placeholder="Search destinations…" oninput="f()">
+<div class="chips">
+<button class="chip on" onclick="t('all',this)">All</button>
+<button class="chip" onclick="t('heritage',this)">🏛️ Heritage</button>
+<button class="chip" onclick="t('spiritual',this)">🛕 Spiritual</button>
+<button class="chip" onclick="t('attractions',this)">🌲 Nearby Attractions</button>
+</div>
+<div class="grid">
+
+<!-- ========== New Delhi ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏛️</span><br>
+    <b>New Delhi</b><br>
+    <small>Iconic India Gate and Mughal heritage</small>
+</div>
+
+<!-- ========== Goa ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🏖️</span><br>
+    <b>Goa</b><br>
+    <small>Palm-lined beaches and sunsets</small>
+</div>
+
+<!-- ========== Jaipur ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏰</span><br>
+    <b>Jaipur</b><br>
+    <small>The Pink City of palaces</small>
+</div>
+
+<!-- ========== Udaipur ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏯</span><br>
+    <b>Udaipur</b><br>
+    <small>City of lakes and havelis</small>
+</div>
+
+<!-- ========== Agra – Taj Mahal ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🕌</span><br>
+    <b>Agra – Taj Mahal</b><br>
+    <small>The white-marble monument of love</small>
+</div>
+
+<!-- ========== Red Fort, Delhi ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏰</span><br>
+    <b>Red Fort, Delhi</b><br>
+    <small>Mughal fortress and UNESCO site</small>
+</div>
+
+<!-- ========== Qutub Minar ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🗼</span><br>
+    <b>Qutub Minar</b><br>
+    <small>Towering 13th-century victory tower</small>
+</div>
+
+<!-- ========== Humayun's Tomb ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🕍</span><br>
+    <b>Humayun's Tomb</b><br>
+    <small>Garden tomb that inspired the Taj</small>
+</div>
+
+<!-- ========== Fatehpur Sikri ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏯</span><br>
+    <b>Fatehpur Sikri</b><br>
+    <small>Abandoned red-sandstone Mughal capital</small>
+</div>
+
+<!-- ========== Amber Fort, Jaipur ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏰</span><br>
+    <b>Amber Fort, Jaipur</b><br>
+    <small>Hilltop fort with mirror-work palace</small>
+</div>
+
+<!-- ========== Hawa Mahal ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🪟</span><br>
+    <b>Hawa Mahal</b><br>
+    <small>The Palace of Winds facade</small>
+</div>
+
+<!-- ========== Jaisalmer Fort ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏜️</span><br>
+    <b>Jaisalmer Fort</b><br>
+    <small>Living golden fort in the Thar Desert</small>
+</div>
+
+<!-- ========== Mehrangarh, Jodhpur ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏰</span><br>
+    <b>Mehrangarh, Jodhpur</b><br>
+    <small>Mighty fort above the blue city</small>
+</div>
+
+<!-- ========== Hampi ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🪨</span><br>
+    <b>Hampi</b><br>
+    <small>Ruins of the Vijayanagara empire</small>
+</div>
+
+<!-- ========== Khajuraho ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🗿</span><br>
+    <b>Khajuraho</b><br>
+    <small>Temples famed for intricate carvings</small>
+</div>
+
+<!-- ========== Konark Sun Temple ========== -->
+<div class="card dest" data-c="heritage spiritual">
+    <span class="big">☀️</span><br>
+    <b>Konark Sun Temple</b><br>
+    <small>Chariot-shaped 13th-century temple</small>
+</div>
+
+<!-- ========== Ajanta & Ellora Caves ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🕳️</span><br>
+    <b>Ajanta & Ellora Caves</b><br>
+    <small>Ancient rock-cut caves and murals</small>
+</div>
+
+<!-- ========== Mahabalipuram ========== -->
+<div class="card dest" data-c="heritage attractions">
+    <span class="big">🌊</span><br>
+    <b>Mahabalipuram</b><br>
+    <small>Shore Temple and rock sculptures</small>
+</div>
+
+<!-- ========== Mysore Palace ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">👑</span><br>
+    <b>Mysore Palace</b><br>
+    <small>Grand palace lit up by thousands of bulbs</small>
+</div>
+
+<!-- ========== Gateway of India, Mumbai ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🚪</span><br>
+    <b>Gateway of India, Mumbai</b><br>
+    <small>Arched seafront landmark</small>
+</div>
+
+<!-- ========== Sanchi Stupa ========== -->
+<div class="card dest" data-c="heritage spiritual">
+    <span class="big">🛖</span><br>
+    <b>Sanchi Stupa</b><br>
+    <small>Ancient Buddhist monument from Ashoka's era</small>
+</div>
+
+<!-- ========== Charminar, Hyderabad ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🕌</span><br>
+    <b>Charminar, Hyderabad</b><br>
+    <small>The 16th-century four-minaret icon</small>
+</div>
+
+<!-- ========== Victoria Memorial, Kolkata ========== -->
+<div class="card dest" data-c="heritage">
+    <span class="big">🏛️</span><br>
+    <b>Victoria Memorial, Kolkata</b><br>
+    <small>White-marble museum and gardens</small>
+</div>
+
+<!-- ========== Varanasi ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">🛕</span><br>
+    <b>Varanasi</b><br>
+    <small>Ganga ghats and evening aarti</small>
+</div>
+
+<!-- ========== Golden Temple, Amritsar ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">✨</span><br>
+    <b>Golden Temple, Amritsar</b><br>
+    <small>Sikhism's holiest shrine</small>
+</div>
+
+<!-- ========== Rishikesh ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">🧘</span><br>
+    <b>Rishikesh</b><br>
+    <small>Yoga capital on the Ganges</small>
+</div>
+
+<!-- ========== Haridwar ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">🪔</span><br>
+    <b>Haridwar</b><br>
+    <small>Ganga Aarti at Har Ki Pauri</small>
+</div>
+
+<!-- ========== Bodh Gaya ========== -->
+<div class="card dest" data-c="spiritual heritage">
+    <span class="big">🌳</span><br>
+    <b>Bodh Gaya</b><br>
+    <small>Where the Buddha attained enlightenment</small>
+</div>
+
+<!-- ========== Meenakshi Temple, Madurai ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">🛕</span><br>
+    <b>Meenakshi Temple, Madurai</b><br>
+    <small>Colorful towering gopurams</small>
+</div>
+
+<!-- ========== Tirupati ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">🙏</span><br>
+    <b>Tirupati</b><br>
+    <small>Sri Venkateswara Temple on the Tirumala hills</small>
+</div>
+
+<!-- ========== Puri ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">🚩</span><br>
+    <b>Puri</b><br>
+    <small>Jagannath Temple and the famous Rath Yatra</small>
+</div>
+
+<!-- ========== Ajmer Sharif ========== -->
+<div class="card dest" data-c="spiritual">
+    <span class="big">🕌</span><br>
+    <b>Ajmer Sharif</b><br>
+    <small>Revered dargah of Khwaja Moinuddin Chishti</small>
+</div>
+
+<!-- ========== Kerala Backwaters ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🌴</span><br>
+    <b>Kerala Backwaters</b><br>
+    <small>Houseboats through calm green canals</small>
+</div>
+
+<!-- ========== Munnar ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🍃</span><br>
+    <b>Munnar</b><br>
+    <small>Rolling tea gardens and misty hills</small>
+</div>
+
+<!-- ========== Darjeeling ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🏔️</span><br>
+    <b>Darjeeling</b><br>
+    <small>Tea estates with Kanchenjunga views</small>
+</div>
+
+<!-- ========== Manali ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">❄️</span><br>
+    <b>Manali</b><br>
+    <small>Snowy peaks and adventure sports</small>
+</div>
+
+<!-- ========== Leh Ladakh ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🏞️</span><br>
+    <b>Leh Ladakh</b><br>
+    <small>High-altitude lakes and mountain passes</small>
+</div>
+
+<!-- ========== Shimla ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🚂</span><br>
+    <b>Shimla</b><br>
+    <small>Colonial hill station and toy train</small>
+</div>
+
+<!-- ========== Ooty ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🌿</span><br>
+    <b>Ooty</b><br>
+    <small>Nilgiri hills, lake and botanical gardens</small>
+</div>
+
+<!-- ========== Andaman Islands ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🏝️</span><br>
+    <b>Andaman Islands</b><br>
+    <small>Clear waters, coral reefs and white sand</small>
+</div>
+
+<!-- ========== Jim Corbett National Park ========== -->
+<div class="card dest" data-c="attractions">
+    <span class="big">🐯</span><br>
+    <b>Jim Corbett National Park</b><br>
+    <small>Jungle safari in India's oldest national park</small>
+</div>
+
+</div>
+<h2>More to explore</h2>
+<div class="grid">
+    <a class="card" href="food.html">🍽️ Food & Dining</a>
+    <a class="card" href="hotels.html">🛏️ Hotels</a>
+    <a class="card" href="plan.html">🗓️ Plan Your Trip</a>
+</div>
+</main>
+<script>
+let tag='all';
+function f(){const q=document.getElementById('q').value.toLowerCase();
+document.querySelectorAll('.dest').forEach(c=>{c.style.display=(tag=='all'||c.dataset.c.includes(tag))&&c.textContent.toLowerCase().includes(q)?'':'none'})}
+function t(x,b){tag=x;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));b.classList.add('on');f()}
+document.getElementById('q').value=new URLSearchParams(location.search).get('q')||'';f();
+</script>
+</body>
+</html>
