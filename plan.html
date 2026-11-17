@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Trip – TravelApp</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            color: #0b2d6b;
+            background: linear-gradient(#e6eefb, #f7faff) fixed
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #d5e0f5;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 8px 16px;
+            align-items: center
+        }
+
+        .logo {
+            font-weight: 800;
+            margin-right: auto
+        }
+
+        header a {
+            color: #0b2d6b;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: .9rem
+        }
+
+        header a.on {
+            background: #f26a1b;
+            color: #fff;
+            font-weight: 700
+        }
+
+        main {
+            max-width: 960px;
+            margin: auto;
+            padding: 20px 16px 50px
+        }
+
+        h1 {
+            text-align: center;
+            margin: 8px 0 4px
+        }
+
+        h2 {
+            margin: 26px 0 8px;
+            font-size: 1.2rem
+        }
+
+        .sub {
+            text-align: center;
+            color: #4d638f
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #d5e0f5;
+            border-radius: 14px;
+            padding: 14px;
+            box-shadow: 0 2px 8px #0b2d6b14;
+            margin-bottom: 10px
+        }
+
+        .big {
+            font-size: 2.4rem
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        input,
+        select,
+        button {
+            font: inherit;
+            padding: 10px;
+            border: 1px solid #d5e0f5;
+            border-radius: 10px;
+            background: #fff;
+            color: inherit
+        }
+
+        .btn {
+            background: #f26a1b;
+            color: #fff;
+            border: 0;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr auto;
+            gap: 8px;
+            margin: 10px 0 16px
+        }
+
+        @media(max-width:640px) {
+            .form {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <span class="logo" Travel App></span>
+        <a href="Home.html">Home</a>
+        <a href="Explore.html">Explore</a>
+        <a class="on" href="plan.html">Plan Trip</a>
+        <a href="hotels.html">Hotel Booking</a>
+        <a href="food.html">Food</a>
+        <a href="more.html">More</a>
+    </header>
+    <main>
+        <h1>Plan Your Trip</h1>
+        <p class="sub">Create & manage your itinerary</p>
+        <div class="card">
+            <b>Build Itinerary</b>
+            <div class="form">
+                <select id="pl">
+                    <option>New Delhi</option>
+                    <option>Kathmandu</option>
+                    <option>Goa</option>
+                    <option>Jaipur</option>
+                    <option>Pokhara</option>
+                    <option>Udaipur</option>
+                    <option>Nagarkot</option>
+                </select>
+                <input id="dt" type="date">
+                <input id="nt" placeholder="Note (e.g. sunrise hike)">
+                <button class="btn" onclick="addStop()">Add stop</button>
+            </div>
+            <div id="list"></div>
+            <button onclick="T=[];save();show()">Clear itinerary</button>
+        </div>
+        <h2>Featured Trips</h2>
+        <div class="grid">
+            <div class="card"><span class="big">🛕</span><br>
+                <b>Enchanting Kathmandu</b><br>
+                <small>Explore the Heart of Nepal</small><br><br>
+                <button class="btn" onclick="add('Kathmandu')">+ Add to trip</button>
+            </div>
+            <div class="card">
+                <span class="big">🏰</span><br>
+                <b>Majestic Jaipur</b><br>
+                <small>Discover the Pink City</small><br><br>
+                <button class="btn" onclick="add('Jaipur')">+ Add to trip</button>
+            </div>
+            <div class="card">
+                <span class="big">🛶</span>
+                <br><b>Serene Lakes of Pokhara</b><br>
+                <small>Relax by the Lakeside</small><br><br>
+                <button class="btn" onclick="add('Pokhara')">+ Add to trip</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

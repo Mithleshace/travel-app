@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>More – TravelApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+*{
+    box-sizing:border-box
+}
+body{
+    margin:0;
+    font-family:system-ui,sans-serif;
+    color:#0b2d6b;
+    background:linear-gradient(#e6eefb,#f7faff) fixed}
+header{
+    position:sticky;
+    top:0;
+    z-index:2;
+    background:#fff;
+    border-bottom:1px solid #d5e0f5;
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+    padding:8px 16px;
+    align-items:center
+}
+.logo{
+    font-weight:800;
+    margin-right:auto
+}
+header a{
+    color:#0b2d6b;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:8px;
+    font-size:.9rem
+}header a.on{
+    background:#f26a1b;
+    color:#fff;
+    font-weight:700
+}
+main{
+    max-width:960px;
+    margin:auto;
+    padding:20px 16px 50px
+}
+h1{text-align:center;
+    margin:8px 0 4px
+}h2{
+    margin:26px 0 8px;
+    font-size:1.2rem}
+.sub{text-align:center;
+    color:#4d638f
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:14px
+}
+.two{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:14px;
+    margin-top:14px
+}
+.card{
+    background:#fff;
+    border:1px solid #d5e0f5;
+    border-radius:14px;
+    padding:14px;
+    color:inherit;text-decoration:none;
+    box-shadow:0 2px 8px #0b2d6b14
+}
+.big{
+    font-size:2rem
+}
+.sos{
+    display:block;
+    text-align:center;
+    border-left:5px solid #f26a1b
+}
+.num{
+    display:block;
+    font-size:1.6rem;
+    font-weight:800;
+    color:#f26a1b
+}
+input,button{
+    font:inherit;
+    padding:10px;
+    border:1px solid #d5e0f5;
+    border-radius:10px;
+    background:#fff;
+    color:inherit
+}
+.search{display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin:14px 0
+}
+.search input{
+flex:1;
+min-width:200px
+}
+.btn{
+    display:inline-block;
+    background:#f26a1b;
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+    border:0;
+    padding:10px 16px;
+    border-radius:10px;
+    margin:6px 6px 0 0;
+    cursor:pointer
+}
+.alt{background:#0b2d6b}
+.small{
+    padding:6px 12px;
+    font-size:.85rem
+}
+.msg{
+    text-align:center;
+    color:#4d638f
+}
+.banner{
+    display:none;
+    text-align:center;
+    color:#f26a1b;
+    font-weight:700
+}
+.ph{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px
+}
+.row{margin:6px 0}
+.pill{
+    display:inline-block;
+    background:#e6eefb;
+    border-radius:20px;
+    padding:3px 10px;
+    margin:2px
+}
+.pill a{
+    color:inherit;
+    text-decoration:none
+}
+.item{
+    border-top:1px solid #d5e0f5;
+    padding:10px 0
+}
+#map{
+    height:380px;
+    border-radius:10px;
+    margin-top:14px;
+    z-index:1
+}
+.pin{
+    background:#fff;
+    border:2px solid #0b2d6b;
+    border-radius:50%;
+    text-align:center;
+    line-height:26px
+}
+</style>
+</head>
+
+<body>
+    <header>
+        <span class="logo">TravelApp</span>
+        <a href="Home.html">Home</a>
+        <a href="Explore.html">Explore</a>
+        <a href="plan.html">Plan Trip</a>
+        <a href="hotels.html">Hotel Booking</a>
+        <a href="food.html">Food</a>
+        <a class="on" href="more.html">More</a>
+    </header>
+    <main>
+        <h1>More</h1>
+        <p class="sub">Emergency help, nearby services, offline maps &amp; place information</p>
+
+        <div id="offlineBanner" class="banner">📴 You are offline. Saved places still work.</div>
+
+        <!-- ========== Emergency Contacts ========== -->
+        <h2>🚨 Emergency Contacts (India)</h2>
+        <div class="grid">
+            <a class="card sos" href="tel:112"><span class="big">🆘</span>
+                <span class="num">112</span><b>National Emergency</b><br><small>Police, fire, ambulance</small></a>
+            <a class="card sos" href="tel:100"><span class="big">🚓</span><span class="num">100</span><b>Police</b></a>
+            <a class="card sos" href="tel:101"><span class="big">🚒</span><span class="num">101</span><b>Fire</b></a>
+            <a class="card sos" href="tel:102"><span class="big">🚑</span><span class="num">102</span><b>Ambulance</b></a>
+            <a class="card sos" href="tel:108"><span class="big">🏥</span><span class="num">108</span><b>Emergency Ambulance</b></a>
+            <a class="card sos" href="tel:1091"><span class="big">👩</span><span class="num">1091</span><b>Women Helpline</b></a>
+            <a class="card sos" href="tel:1098"><span class="big">🧒</span><span class="num">1098</span><b>Child Helpline</b></a>
+            <a class="card sos" href="tel:1363"><span class="big">🧳</span><span class="num">1363</span><b>Tourist Helpline</b></a>
+            <a class="card sos" href="tel:1930"><span class="big">💻</span><span class="num">1930</span><b>Cyber Crime</b></a>
+            <a class="card sos" href="tel:1033"><span class="big">🛣️</span><span class="num">1033</span><b>Highway Help</b></a>
+            <a class="card sos" href="tel:182"><span class="big">🚆</span><span class="num">182</span><b>Railway Security</b></a>
+            <a class="card sos" href="tel:1078"><span class="big">🌪️</span><span class="num">1078</span><b>Disaster Management</b></a>
+        </div>
+
+        <!-- ========== Place Search ========== -->
+        <h2>🔎 Search a Place</h2>
+        <p class="sub">Get information, nearby police stations &amp; hospitals, and a map you can save for offline use.</p>
+        <div class="search">
+            <input id="place" placeholder="e.g. Taj Mahal, Jaipur, Goa, Manali…">
+            <button class="btn" onclick="searchPlace()">Search</button>
+            <button class="btn alt" onclick="useMyLocation()">📍 Use my location</button>
+        </div>
+        <p id="status" class="msg"></p>
+
+        <div id="results" style="display:none">
+
+            <!-- ========== Place Information ========== -->
+            <div class="card" id="info"></div>
+
+            <!-- ========== Map ========== -->
+            <div class="card" style="margin-top:14px">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+                    <h3 style="margin:0">🗺️ Map</h3>
+                    <button class="btn small" onclick="saveOffline()">⬇️ Save for offline</button>
+                </div>
+                <div id="map"></div>
+                <p class="msg" id="saveStatus"></p>
+            </div>
+
+            <!-- ========== Police & Hospitals ========== -->
+            <div class="two">
+                <div class="card"><h3>🚓 Nearby Police Stations</h3><div id="police"></div></div>
+                <div class="card"><h3>🏥 Nearby Hospitals</h3><div id="hospitals"></div></div>
+            </div>
+        </div>
+
+        <!-- ========== Saved Offline Places ========== -->
+        <h2>📴 Saved Offline Places</h2>
+        <div class="card" id="saved"></div>
+
+        <p class="sub">Data: OpenStreetMap contributors (maps, places, police &amp; hospitals) · Wikipedia · Open-Meteo (weather).<br>
+            Always call 112 in a real emergency. Listed numbers may change; please verify locally.</p>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script>
+        const $ = id => document.getElementById(id);
+        const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const KEY = 'travelapp_saved_places';
+        const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+        let map = null, current = null;
+
+        /* ---------- Offline-capable map tiles (Cache API) ---------- */
+        async function getTile(url) {
+            if (!window.caches) return { src: url };
+            const c = await caches.open('travelapp-tiles');
+            let r = await c.match(url);
+            if (!r) {
+                r = await fetch(url, { mode: 'cors' });
+                if (!r.ok) throw new Error('tile');
+                c.put(url, r.clone());
+            }
+            return { src: URL.createObjectURL(await r.blob()), blob: true };
+        }
+        const CachedTiles = L.TileLayer.extend({
+            createTile: function (coords, done) {
+                const img = document.createElement('img');
+                img.alt = '';
+                getTile(this.getTileUrl(coords)).then(t => {
+                    img.onload = () => { if (t.blob) URL.revokeObjectURL(t.src); done(null, img) };
+                    img.onerror = () => done(null, img);
+                    img.src = t.src;
+                }).catch(() => done(null, img));
+                return img;
+            }
+        });
+
+        /* ---------- Helpers ---------- */
+        function status(t) { $('status').textContent = t || '' }
+        function km(a, b, c, d) {
+            const R = 6371, r = x => x * Math.PI / 180;
+            const dl = r(c - a), dn = r(d - b);
+            const h = Math.sin(dl / 2) ** 2 + Math.cos(r(a)) * Math.cos(r(c)) * Math.sin(dn / 2) ** 2;
+            return 2 * R * Math.asin(Math.sqrt(h));
+        }
+        function weatherText(c) {
+            if (c === 0) return ['☀️', 'Clear sky'];
+            if (c <= 3) return ['⛅', 'Partly cloudy'];
+            if (c <= 48) return ['🌫️', 'Fog'];
+            if (c <= 57) return ['🌦️', 'Drizzle'];
+            if (c <= 67) return ['🌧️', 'Rain'];
+            if (c <= 77) return ['❄️', 'Snow'];
+            if (c <= 82) return ['🌦️', 'Rain showers'];
+            return ['⛈️', 'Thunderstorm'];
+        }
+        function getSaved() {
+            try { return JSON.parse(localStorage.getItem(KEY)) || [] } catch (e) { return [] }
+        }
+        const lon2x = (lon, z) => Math.floor((lon + 180) / 360 * 2 ** z);
+        const lat2y = (lat, z) => Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * 2 ** z);
+
+        /* ---------- Data sources ---------- */
+        async function geocode(q) {
+            const r = await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&addressdetails=1&countrycodes=in&q=' + encodeURIComponent(q));
+            const d = await r.json();
+            return d[0] || null;
+        }
+        async function reverse(lat, lon) {
+            const r = await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&addressdetails=1&lat=' + lat + '&lon=' + lon);
+            return r.json();
+        }
+        async function getWiki(q) {
+            const s = await (await fetch('https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=1&srsearch=' + encodeURIComponent(q))).json();
+            const hit = s.query && s.query.search[0];
+            if (!hit) return null;
+            const w = await (await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(hit.title))).json();
+            return { title: w.title, extract: w.extract, image: w.thumbnail && w.thumbnail.source, url: w.content_urls && w.content_urls.desktop.page };
+        }
+        async function getWeather(lat, lon) {
+            const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto');
+            const c = (await r.json()).current;
+            const w = weatherText(c.weather_code);
+            return { temp: Math.round(c.temperature_2m), hum: c.relative_humidity_2m, wind: Math.round(c.wind_speed_10m), icon: w[0], text: w[1] };
+        }
+        async function getNearbyPlaces(lat, lon, title) {
+            const r = await fetch('https://en.wikipedia.org/w/api.php?action=query&list=geosearch&format=json&origin=*&gslimit=9&gsradius=10000&gscoord=' + lat + '|' + lon);
+            const d = await r.json();
+            return d.query.geosearch.filter(x => x.title !== title).slice(0, 8).map(x => ({ title: x.title, dist: x.dist }));
+        }
+        async function getServices(lat, lon) {
+            const R = 7000;
+            const q = '[out:json][timeout:25];' +
+                '(node["amenity"="police"](around:' + R + ',' + lat + ',' + lon + ');way["amenity"="police"](around:' + R + ',' + lat + ',' + lon + '););out center tags 100;' +
+                '(node["amenity"="hospital"](around:' + R + ',' + lat + ',' + lon + ');way["amenity"="hospital"](around:' + R + ',' + lat + ',' + lon + '););out center tags 100;';
+            const servers = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+            let data = null;
+            for (const s of servers) {
+                try {
+                    const r = await fetch(s, { method: 'POST', body: 'data=' + encodeURIComponent(q) });
+                    if (r.ok) { data = await r.json(); break }
+                } catch (e) { }
+            }
+            if (!data) throw new Error('overpass');
+            const out = { police: [], hospitals: [] };
+            data.elements.forEach(e => {
+                const t = e.tags || {};
+                const la = e.lat != null ? e.lat : e.center && e.center.lat;
+                const lo = e.lon != null ? e.lon : e.center && e.center.lon;
+                if (la == null) return;
+                const item = {
+                    name: t.name || t['name:en'] || '',
+                    lat: la, lon: lo,
+                    phone: t.phone || t['contact:phone'] || '',
+                    addr: [t['addr:street'], t['addr:city']].filter(Boolean).join(', '),
+                    dist: km(lat, lon, la, lo)
+                };
+                (t.amenity === 'police' ? out.police : out.hospitals).push(item);
+            });
+            const top = a => a.sort((x, y) => x.dist - y.dist).slice(0, 6);
+            return { police: top(out.police), hospitals: top(out.hospitals) };
+        }
+
+        /* ---------- Search flow ---------- */
+        async function searchPlace() {
+            const q = $('place').value.trim();
+            if (!q) return status('Please type a place name.');
+            if (!navigator.onLine) return status('You are offline. Open a saved place below instead.');
+            status('Searching…');
+            try {
+                const g = await geocode(q);
+                if (!g) return status('Place not found in India. Try a different spelling.');
+                await loadPlace(g, q);
+            } catch (e) { status('Could not search right now. Please try again.') }
+        }
+        function useMyLocation() {
+            if (!navigator.geolocation) return status('Location is not supported on this device.');
+            if (!navigator.onLine) return status('You are offline.');
+            status('Getting your location…');
+            navigator.geolocation.getCurrentPosition(async p => {
+                try {
+                    const g = await reverse(p.coords.latitude, p.coords.longitude);
+                    g.lat = p.coords.latitude; g.lon = p.coords.longitude;
+                    const a = g.address || {};
+                    const name = a.suburb || a.city_district || a.city || a.town || a.village || a.state_district || 'My location';
+                    g.name = name;
+                    await loadPlace(g, a.city || a.town || a.state_district || name);
+                } catch (e) { status('Could not find your location details.') }
+            }, () => status('Location permission was denied.'));
+        }
+        async function loadPlace(g, wikiQuery) {
+            status('Loading place information, police stations and hospitals…');
+            const lat = parseFloat(g.lat), lon = parseFloat(g.lon);
+            const title = g.name || (g.display_name || '').split(',')[0];
+            const [wiki, weather, nearby, services] = await Promise.allSettled([
+                getWiki(wikiQuery || title), getWeather(lat, lon), getNearbyPlaces(lat, lon, title), getServices(lat, lon)
+            ]);
+            const val = r => r.status === 'fulfilled' ? r.value : null;
+            const a = g.address || {};
+            const d = {
+                id: lat.toFixed(3) + ',' + lon.toFixed(3),
+                title: title,
+                address: g.display_name || '',
+                state: a.state || '',
+                type: (g.type || g.category || '').replace(/_/g, ' '),
+                lat: lat, lon: lon,
+                wiki: val(wiki), weather: val(weather), nearby: val(nearby) || [],
+                police: (val(services) || {}).police || [],
+                hospitals: (val(services) || {}).hospitals || [],
+                servicesFailed: services.status !== 'fulfilled'
+            };
+            render(d, null);
+            status(d.servicesFailed ? 'Place loaded, but police/hospital data could not be fetched. Call 112 for help.' : '');
+        }
+
+        /* ---------- Rendering ---------- */
+        function listHTML(arr, label, failed) {
+            if (failed) return '<p class="msg">Could not load data. Call 112 in an emergency.</p>';
+            if (!arr.length) return '<p class="msg">No ' + label + ' found within 7 km in map data. Call 112 in an emergency.</p>';
+            return arr.map(p => {
+                const phone = (p.phone || '').split(/[;,]/)[0].replace(/[^\d+]/g, '');
+                return '<div class="item"><b>' + esc(p.name || label) + '</b><br>' +
+                    '<small>' + p.dist.toFixed(1) + ' km away' + (p.addr ? ' · ' + esc(p.addr) : '') + '</small>' +
+                    '<div class="actions">' +
+                    '<a class="btn small" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lon + '">🧭 Directions</a>' +
+                    (phone ? '<a class="btn small alt" href="tel:' + phone + '">📞 Call</a>' : '') +
+                    '</div></div>';
+            }).join('');
+        }
+        function render(d, savedAt) {
+            current = d;
+            $('results').style.display = '';
+            const w = d.weather ? d.weather.icon + ' ' + d.weather.temp + '°C · ' + esc(d.weather.text) + ' · Humidity ' + d.weather.hum + '% · Wind ' + d.weather.wind + ' km/h' : 'Weather not available';
+            $('info').innerHTML =
+                (d.wiki && d.wiki.image ? '<img class="ph" alt="' + esc(d.title) + '" src="' + esc(d.wiki.image) + '" onerror="this.remove()">' : '') +
+                '<h3 style="font-size:1.4rem">' + esc(d.title) + (savedAt ? ' <span class="pill">📴 Offline copy · ' + new Date(savedAt).toLocaleDateString() + '</span>' : '') + '</h3>' +
+                '<div class="row">📍 ' + esc(d.address) + '</div>' +
+                (d.state ? '<div class="row">🏛️ State: ' + esc(d.state) + '</div>' : '') +
+                (d.type ? '<div class="row">🏷️ Type: ' + esc(d.type) + '</div>' : '') +
+                '<div class="row">🧭 Coordinates: ' + d.lat.toFixed(4) + ', ' + d.lon.toFixed(4) + '</div>' +
+                '<div class="row">🌤️ Now: ' + w + '</div>' +
+                (d.wiki && d.wiki.extract ? '<p>' + esc(d.wiki.extract) + '</p>' : '<p class="msg">No description found for this place.</p>') +
+                (d.wiki && d.wiki.url ? '<div class="row"><a href="' + esc(d.wiki.url) + '" target="_blank" rel="noopener">Read more on Wikipedia →</a></div>' : '') +
+                (d.nearby.length ? '<div class="row"><b>Nearby places to visit</b></div>' + d.nearby.map(n =>
+                    '<span class="pill"><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/' + encodeURIComponent(n.title.replace(/ /g, '_')) + '">' + esc(n.title) + ' · ' + (n.dist / 1000).toFixed(1) + ' km</a></span>').join('') : '');
+            $('police').innerHTML = listHTML(d.police, 'Police Station', d.servicesFailed);
+            $('hospitals').innerHTML = listHTML(d.hospitals, 'Hospital', d.servicesFailed);
+            $('saveStatus').textContent = '';
+            drawMap(d);
+            $('info').scrollIntoView({ behavior: 'smooth' });
+        }
+        function pin(emoji, lat, lon, text) {
+            L.marker([lat, lon], { icon: L.divIcon({ html: emoji, className: 'pin', iconSize: [30, 30], iconAnchor: [15, 15] }) })
+                .addTo(map).bindPopup(esc(text));
+        }
+        function drawMap(d) {
+            if (map) { map.remove(); map = null }
+            map = L.map('map').setView([d.lat, d.lon], 14);
+            new CachedTiles(TILE_URL, { maxZoom: 19, attribution: '© OpenStreetMap contributors' }).addTo(map);
+            const pts = [[d.lat, d.lon]];
+            pin('📍', d.lat, d.lon, d.title);
+            d.police.forEach(p => { pin('🚓', p.lat, p.lon, p.name || 'Police Station'); pts.push([p.lat, p.lon]) });
+            d.hospitals.forEach(p => { pin('🏥', p.lat, p.lon, p.name || 'Hospital'); pts.push([p.lat, p.lon]) });
+            if (pts.length > 1) map.fitBounds(pts, { padding: [30, 30], maxZoom: 15 });
+        }
+
+        /* ---------- Save for offline ---------- */
+        async function saveOffline() {
+            if (!current) return;
+            const list = getSaved().filter(x => x.id !== current.id);
+            list.unshift(Object.assign({}, current, { savedAt: Date.now() }));
+            try { localStorage.setItem(KEY, JSON.stringify(list.slice(0, 20))) }
+            catch (e) { $('saveStatus').textContent = 'Storage is full. Delete a saved place first.'; return }
+            renderSaved();
+            await prefetchTiles(current.lat, current.lon);
+        }
+        async function prefetchTiles(lat, lon) {
+            const s = $('saveStatus');
+            if (!window.caches) { s.textContent = 'Place info saved. Map tiles can only be saved when the site runs on https or localhost.'; return }
+            if (!navigator.onLine) { s.textContent = 'Place info saved. Go online to also save the map.'; return }
+            const c = await caches.open('travelapp-tiles');
+            const urls = [];
+            for (let z = 11; z <= 15; z++) {
+                const x0 = lon2x(lon, z), y0 = lat2y(lat, z);
+                for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++)
+                    urls.push(TILE_URL.replace('{z}', z).replace('{x}', x0 + dx).replace('{y}', y0 + dy));
+            }
+            let n = 0;
+            for (const u of urls) {
+                try { if (!(await c.match(u))) { const r = await fetch(u, { mode: 'cors' }); if (r.ok) await c.put(u, r) } } catch (e) { }
+                n++;
+                s.textContent = 'Saving map for offline… ' + n + '/' + urls.length;
+            }
+            s.textContent = '✅ Saved! This place and its map are now available offline.';
+        }
+        function renderSaved() {
+            const list = getSaved();
+            $('saved').innerHTML = list.length ? list.map(p =>
+                '<div class="item"><b>' + esc(p.title) + '</b> <small>' + (p.state ? '· ' + esc(p.state) + ' ' : '') + '· saved ' + new Date(p.savedAt).toLocaleDateString() + '</small>' +
+                '<div class="actions"><button class="btn small" onclick="openSaved(\'' + p.id + '\')">Open</button>' +
+                '<button class="btn small alt" onclick="deleteSaved(\'' + p.id + '\')">Delete</button></div></div>').join('')
+                : '<p class="msg">No saved places yet. Search a place and tap “Save for offline”.</p>';
+        }
+        function openSaved(id) {
+            const p = getSaved().find(x => x.id === id);
+            if (p) render(p, p.savedAt);
+        }
+        function deleteSaved(id) {
+            localStorage.setItem(KEY, JSON.stringify(getSaved().filter(x => x.id !== id)));
+            renderSaved();
+        }
+
+        /* ---------- Init ---------- */
+        $('place').addEventListener('keydown', e => { if (e.key === 'Enter') searchPlace() });
+        function net() { $('offlineBanner').style.display = navigator.onLine ? 'none' : 'block' }
+        window.addEventListener('online', net);
+        window.addEventListener('offline', net);
+        net();
+        renderSaved();
+        const pre = new URLSearchParams(location.search).get('q');
+        if (pre) { $('place').value = pre; searchPlace() }
+    </script>
+</body>
+
+</html>

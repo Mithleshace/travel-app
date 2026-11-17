@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Food – TravelApp</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            color: #0b2d6b;
+            background: linear-gradient(#e6eefb, #f7faff) fixed
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #d5e0f5;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 8px 16px;
+            align-items: center
+        }
+
+        .logo {
+            font-weight: 800;
+            margin-right: auto
+        }
+
+        header a {
+            color: #0b2d6b;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: .9rem
+        }
+
+        header a.on {
+            background: #f26a1b;
+            color: #fff;
+            font-weight: 700
+        }
+
+        main {
+            max-width: 960px;
+            margin: auto;
+            padding: 20px 16px 50px
+        }
+
+        h1 {
+            text-align: center;
+            margin: 8px 0 4px
+        }
+
+        h2 {
+            margin: 26px 0 8px;
+            font-size: 1.2rem
+        }
+
+        .sub {
+            text-align: center;
+            color: #4d638f
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #d5e0f5;
+            border-radius: 14px;
+            padding: 14px;
+            box-shadow: 0 2px 8px #0b2d6b14
+        }
+
+        .big {
+            font-size: 2.4rem
+        }
+
+        .state {
+            display: inline-block;
+            margin: 4px 0;
+            font-size: .75rem;
+            font-weight: 700;
+            color: #f26a1b
+        }
+
+        .tabs {
+            display: flex;
+            max-width: 420px;
+            margin: 16px auto;
+            border: 1px solid #d5e0f5;
+            border-radius: 10px;
+            overflow: hidden
+        }
+
+        .tabs button {
+            flex: 1;
+            padding: 10px;
+            border: 0;
+            background: #fff;
+            color: #0b2d6b;
+            font: inherit;
+            cursor: pointer
+        }
+
+        .tabs .on {
+            background: #0b2d6b;
+            color: #fff;
+            font-weight: 700
+        }
+
+        .btn {
+            display: inline-block;
+            background: #f26a1b;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <span class="logo">TravelApp</span>
+        <a href="Home.html">Home</a>
+        <a href="Explore.html">Explore</a>
+        <a href="plan.html">Plan Trip</a>
+        <a href="hotels.html">Hotel Booking</a>
+        <a class="on" href="food.html">Food</a>
+        <a href="more.html">More</a>
+    </header>
+    <main>
+        <h1>Local Cuisine & Delights</h1>
+        <p class="sub">Explore the best Indian foods</p>
+        <div class="tabs">
+            <button id="b1" class="on" onclick="tab(1)">Nepali Dishes</button>
+            <button id="b2" onclick="tab(2)">Indian Dishes</button>
+        </div>
+        <section id="s1">
+            <h2>Popular Nepali Dishes</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="big">🥟</span>
+                    <br><b>Momo</b><br>
+                    <small>Tasty Nepali dumplings</small>
+                </div>
+                <div class="card">
+                    <span class="big">🍜</span>
+                    <br><b>Thukpa</b><br>
+                    <small>Spicy noodle soup</small>
+                </div>
+                <div class="card">
+                    <span class="big">🍛</span><br>
+                    <b>Dal Bhat</b><br>
+                    <small>Rice with lentil curry</small>
+                </div>
+                <div class="card">
+                    <span class="big">🍩</span><br>
+                    <b>Sel Roti</b><br>
+                    <small>Crispy rice doughnut</small>
+                </div>
+            </div>
+        </section>
+        <section id="s2" style="display:none">
+            <h2>Local Special Dish of Every Indian State</h2>
+            <div class="grid">
+
+                <!-- ========== Andhra Pradesh ========== -->
+                <div class="card">
+                    <span class="big">🥞</span><br>
+                    <b>Pesarattu</b><br>
+                    <span class="state">📍 Andhra Pradesh</span><br>
+                    <small>Green moong dal dosa served with ginger chutney</small>
+                </div>
+
+                <!-- ========== Arunachal Pradesh ========== -->
+                <div class="card">
+                    <span class="big">🎍</span><br>
+                    <b>Pika Pila</b><br>
+                    <span class="state">📍 Arunachal Pradesh</span><br>
+                    <small>Tangy bamboo shoot pickle of the Apatani tribe</small>
+                </div>
+
+                <!-- ========== Assam ========== -->
+                <div class="card">
+                    <span class="big">🐟</span><br>
+                    <b>Masor Tenga</b><br>
+                    <span class="state">📍 Assam</span><br>
+                    <small>Light, sour fish curry made with tomato or lemon</small>
+                </div>
+
+                <!-- ========== Bihar ========== -->
+                <div class="card">
+                    <span class="big">🥔</span><br>
+                    <b>Litti Chokha</b><br>
+                    <span class="state">📍 Bihar</span><br>
+                    <small>Baked wheat balls with smoky mashed vegetables</small>
+                </div>
+
+                <!-- ========== Chhattisgarh ========== -->
+                <div class="card">
+                    <span class="big">🫓</span><br>
+                    <b>Chila</b><br>
+                    <span class="state">📍 Chhattisgarh</span><br>
+                    <small>Rice-flour pancake eaten with chutney</small>
+                </div>
+
+                <!-- ========== Goa ========== -->
+                <div class="card">
+                    <span class="big">🍛</span><br>
+                    <b>Goan Fish Curry</b><br>
+                    <span class="state">📍 Goa</span><br>
+                    <small>Tangy coconut curry served with rice</small>
+                </div>
+
+                <!-- ========== Gujarat ========== -->
+                <div class="card">
+                    <span class="big">🟨</span><br>
+                    <b>Dhokla</b><br>
+                    <span class="state">📍 Gujarat</span><br>
+                    <small>Soft steamed gram-flour cake with mustard tempering</small>
+                </div>
+
+                <!-- ========== Haryana ========== -->
+                <div class="card">
+                    <span class="big">🥣</span><br>
+                    <b>Bajra Khichdi</b><br>
+                    <span class="state">📍 Haryana</span><br>
+                    <small>Pearl millet and lentils topped with desi ghee</small>
+                </div>
+
+                <!-- ========== Himachal Pradesh ========== -->
+                <div class="card">
+                    <span class="big">🥟</span><br>
+                    <b>Siddu</b><br>
+                    <span class="state">📍 Himachal Pradesh</span><br>
+                    <small>Steamed wheat bread stuffed and served with ghee</small>
+                </div>
+
+                <!-- ========== Jharkhand ========== -->
+                <div class="card">
+                    <span class="big">🍘</span><br>
+                    <b>Dhuska</b><br>
+                    <span class="state">📍 Jharkhand</span><br>
+                    <small>Deep-fried rice and lentil snack with aloo curry</small>
+                </div>
+
+                <!-- ========== Karnataka ========== -->
+                <div class="card">
+                    <span class="big">🍲</span><br>
+                    <b>Bisi Bele Bath</b><br>
+                    <span class="state">📍 Karnataka</span><br>
+                    <small>Spicy rice, lentil and vegetable one-pot meal</small>
+                </div>
+
+                <!-- ========== Kerala ========== -->
+                <div class="card">
+                    <span class="big">🥥</span><br>
+                    <b>Appam & Stew</b><br>
+                    <span class="state">📍 Kerala</span><br>
+                    <small>Lacy rice hoppers with mild coconut stew</small>
+                </div>
+
+                <!-- ========== Madhya Pradesh ========== -->
+                <div class="card">
+                    <span class="big">🧆</span><br>
+                    <b>Dal Bafla</b><br>
+                    <span class="state">📍 Madhya Pradesh</span><br>
+                    <small>Baked wheat balls dunked in ghee and dal</small>
+                </div>
+
+                <!-- ========== Maharashtra ========== -->
+                <div class="card">
+                    <span class="big">🍔</span><br>
+                    <b>Vada Pav</b><br>
+                    <span class="state">📍 Maharashtra</span><br>
+                    <small>Mumbai's spicy potato fritter in a soft bun</small>
+                </div>
+
+                <!-- ========== Manipur ========== -->
+                <div class="card">
+                    <span class="big">🌶️</span><br>
+                    <b>Eromba</b><br>
+                    <span class="state">📍 Manipur</span><br>
+                    <small>Mashed vegetables with fermented fish and chilli</small>
+                </div>
+
+                <!-- ========== Meghalaya ========== -->
+                <div class="card">
+                    <span class="big">🍚</span><br>
+                    <b>Jadoh</b><br>
+                    <span class="state">📍 Meghalaya</span><br>
+                    <small>Khasi rice cooked with meat and spices</small>
+                </div>
+
+                <!-- ========== Mizoram ========== -->
+                <div class="card">
+                    <span class="big">🥬</span><br>
+                    <b>Bai</b><br>
+                    <span class="state">📍 Mizoram</span><br>
+                    <small>Simple Mizo stew of boiled greens and vegetables</small>
+                </div>
+
+                <!-- ========== Nagaland ========== -->
+                <div class="card">
+                    <span class="big">🥓</span><br>
+                    <b>Smoked Pork with Bamboo Shoot</b><br>
+                    <span class="state">📍 Nagaland</span><br>
+                    <small>Smoky, spicy Naga curry with fermented bamboo shoot</small>
+                </div>
+
+                <!-- ========== Odisha ========== -->
+                <div class="card">
+                    <span class="big">🍚</span><br>
+                    <b>Pakhala</b><br>
+                    <span class="state">📍 Odisha</span><br>
+                    <small>Cooling fermented rice served with fried sides</small>
+                </div>
+
+                <!-- ========== Punjab ========== -->
+                <div class="card">
+                    <span class="big">🫓</span><br>
+                    <b>Sarson da Saag & Makki di Roti</b><br>
+                    <span class="state">📍 Punjab</span><br>
+                    <small>Mustard greens curry with cornmeal flatbread</small>
+                </div>
+
+                <!-- ========== Rajasthan ========== -->
+                <div class="card">
+                    <span class="big">🧈</span><br>
+                    <b>Dal Baati Churma</b><br>
+                    <span class="state">📍 Rajasthan</span><br>
+                    <small>Baked wheat balls with dal and sweet crumble</small>
+                </div>
+
+                <!-- ========== Sikkim ========== -->
+                <div class="card">
+                    <span class="big">🍜</span><br>
+                    <b>Gundruk Soup</b><br>
+                    <span class="state">📍 Sikkim</span><br>
+                    <small>Tangy soup made from fermented leafy greens</small>
+                </div>
+
+                <!-- ========== Tamil Nadu ========== -->
+                <div class="card">
+                    <span class="big">🍗</span><br>
+                    <b>Chettinad Chicken</b><br>
+                    <span class="state">📍 Tamil Nadu</span><br>
+                    <small>Fiery chicken curry with freshly ground spices</small>
+                </div>
+
+                <!-- ========== Telangana ========== -->
+                <div class="card">
+                    <span class="big">🍚</span><br>
+                    <b>Hyderabadi Biryani</b><br>
+                    <span class="state">📍 Telangana</span><br>
+                    <small>Layered, slow-cooked saffron rice with meat</small>
+                </div>
+
+                <!-- ========== Tripura ========== -->
+                <div class="card">
+                    <span class="big">🥘</span><br>
+                    <b>Chakhwi</b><br>
+                    <span class="state">📍 Tripura</span><br>
+                    <small>Tripuri vegetable dish cooked with local herbs</small>
+                </div>
+
+                <!-- ========== Uttar Pradesh ========== -->
+                <div class="card">
+                    <span class="big">🍢</span><br>
+                    <b>Tunday Kebab</b><br>
+                    <span class="state">📍 Uttar Pradesh</span><br>
+                    <small>Melt-in-the-mouth Lucknowi kebabs</small>
+                </div>
+
+                <!-- ========== Uttarakhand ========== -->
+                <div class="card">
+                    <span class="big">🥔</span><br>
+                    <b>Aloo ke Gutke</b><br>
+                    <span class="state">📍 Uttarakhand</span><br>
+                    <small>Pahadi-style spiced potatoes tempered with jakhya</small>
+                </div>
+
+                <!-- ========== West Bengal ========== -->
+                <div class="card">
+                    <span class="big">🐟</span><br>
+                    <b>Macher Jhol</b><br>
+                    <span class="state">📍 West Bengal</span><br>
+                    <small>Light Bengali fish curry served with rice</small>
+                </div>
+
+            </div>
+        </section>
+        <p style="text-align:center">
+            <a id="map" class="btn" target="_blank" rel="noopener"
+                href="https://www.google.com/maps/search/Nepali+restaurants+near+me">📍 Find Nearby Restaurants</a>
+        </p>
+    </main>
+    <script>
+        function tab(n) {
+            document.getElementById('s1').style.display = n == 1 ? '' : 'none'; document.getElementById('s2').style.display = n == 2 ? '' : 'none';
+            b1.classList.toggle('on', n == 1); b2.classList.toggle('on', n == 2);
+            map.href = 'https://www.google.com/maps/search/' + (n == 1 ? 'Nepali' : 'Indian') + '+restaurants+near+me'
+        }
+    </script>
+</body>
+
+</html>

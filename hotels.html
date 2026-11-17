@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hotel Booking – TravelApp</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            color: #0b2d6b;
+            background: linear-gradient(#e6eefb, #f7faff) fixed
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #d5e0f5;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 8px 16px;
+            align-items: center
+        }
+
+        .logo {
+            font-weight: 800;
+            margin-right: auto
+        }
+
+        header a {
+            color: #0b2d6b;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: .9rem
+        }
+
+        header a.on {
+            background: #f26a1b;
+            color: #fff;
+            font-weight: 700
+        }
+
+        main {
+            max-width: 960px;
+            margin: auto;
+            padding: 20px 16px 50px
+        }
+
+        h1 {
+            text-align: center;
+            margin: 8px 0 4px
+        }
+
+        h2 {
+            margin: 26px 0 8px;
+            font-size: 1.2rem
+        }
+
+        .sub {
+            text-align: center;
+            color: #4d638f
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #d5e0f5;
+            border-radius: 14px;
+            padding: 14px;
+            box-shadow: 0 2px 8px #0b2d6b14;
+            margin-bottom: 10px
+        }
+
+        .big {
+            font-size: 2.4rem
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        input,
+        button {
+            font: inherit;
+            padding: 10px;
+            border: 1px solid #d5e0f5;
+            border-radius: 10px;
+            background: #fff;
+            color: inherit
+        }
+
+        .btn {
+            background: #f26a1b;
+            color: #fff;
+            border: 0;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: auto
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px
+        }
+
+        @media(max-width:640px) {
+            .form {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .chips {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px
+        }
+
+        .chip {
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer
+        }
+
+        .chip.on {
+            background: #0b2d6b;
+            color: #fff
+        }
+
+        .star {
+            color: #f26a1b;
+            font-weight: 700
+        }
+    </style>
+</head>
+
+<body>
+    <header><span class="logo">TravelApp</span>
+        <a href="Home.html">Home</a>
+        <a href="Explore.html">Explore</a>
+        <a href="plan.html">Plan Trip</a>
+        <a class="on" href="hotels.html">Hotel Booking</a>
+        <a href="food.html">Food</a>
+        <a href="more.html">More</a>
+    </header>
+    <main>
+        <h1>Find Hotels</h1>
+        <p class="sub">Search & book your itinerary</p>
+        <div class="card">
+            <div class="form">
+                <input id="loc" placeholder="Enter location…" oninput="f()">
+                <input type="date" title="Check-in">
+                <input type="date" title="Check-out">
+            </div>
+            <div class="chips">
+                <button class="chip on" onclick="t('all',this)">All</button>
+                <button class="chip" onclick="t('hot',this)">🔥 Hot Deals</button>
+                <button class="chip" onclick="t('budget',this)">Budget Stays</button>
+                <button class="chip" onclick="t('family',this)">🍀 Family Friendly</button>
+                <button class="chip" onclick="t('luxury',this)">✨ Luxury</button>
+            </div>
+        </div>
+        <h2>Recommended Hotels</h2>
+        <div class="card row hotel" data-t="hot" data-c="kathmandu">
+            <span class="big">🏨</span>
+            <div><b>Mountain View Resort</b><br>
+                <small>Kathmandu</small><br>
+                <span class="star">4.7 ★★★★★</span> From
+                <b>₹3,200</b> / night
+            </div>
+            <button class="btn" onclick="book('Kathmandu','Mountain View Resort')">Book</button>
+        </div>
+        <div class="card row hotel" data-t="luxury" data-c="jaipur">
+            <span class="big">🏰</span>
+            <div><b>Royal Palace Hotel</b><br>
+                <small>Jaipur</small><br>
+                <span class="star">4.8 ★★★★★</span> From
+                <b>₹8,500</b> / night
+            </div>
+            <button class="btn" onclick="book('Jaipur','Royal Palace Hotel')">Book</button>
+        </div>
+        <div class="card row hotel" data-t="family" data-c="pokhara">
+            <span class="big">🛶</span>
+            <div><b>Lakeside Retreat</b><br><small>Pokhara</small><br>
+                <span class="star">4.6 ★★★★★</span> From
+                <b>₹4,000</b> / night
+            </div>
+            <button class="btn" onclick="book('Pokhara','Lakeside Retreat')">Book</button>
+        </div>
+        <div class="card row hotel" data-t="hot" data-c="udaipur">
+            <span class="big">🏯</span>
+            <div>
+                <b>Heritage Haveli</b>
+                <br><small>Udaipur</small><br>
+                <span class="star">4.5 ★★★★★</span> From
+                <b>₹5,800</b> / night
+            </div>
+            <button class="btn" onclick="book('Udaipur','Heritage Haveli')">Book</button>
+        </div>
+        <div class="card row hotel" data-t="budget" data-c="nagarkot">
+            <span class="big">🏔️</span>
+            <div><b>Himalayan Lodge</b><br><small>Nagarkot</small><br>
+                <span class="star">4.7 ★★★★★</span> From
+                <b>₹2,800</b> / night
+            </div><button class="btn" onclick="book('Nagarkot','Himalayan Lodge')">Book</button>
+        </div>
+        <div class="card row hotel" data-t="family" data-c="goa">
+            <span class="big">🏝️</span>
+            <div><b>Beachside Bliss</b><br>
+                <small>Goa</small><br>
+                <span class="star">4.6 ★★★★★</span> From
+                <b>₹6,500</b>
+                / night
+            </div>
+            <button class="btn" onclick="book('Goa','Beachside Bliss')">Book</button>
+        </div>
+    </main>
+</body>
+
+</html>
